@@ -1,0 +1,54 @@
+Pentru a interactiona cu aplicatia mea, ea se executa din folderul in care
+se afla ea, makefile ul, readme, si gamememory.txt. Se navigheaza folosind
+sagetile sau numere prin meniu si setari. Setarile se pot modifica folosind
+sagetile stanga si dreapta. Pentru a iesi dintr-o zona (mai putin din meniu) 
+se apasa q. Prin enter se selecteaza setari sau butoane in meniu. Setarile
+sunt salvate si daca se apasa q pentru a iesi.
+
+In cadrul jocului se folosesc sagetile pentru miscari si orice tasta libera
+pentru o miscare automata.
+
+Pentru a rezolva cerintele am utilizat 16 functii, inclusiv main
+
+Functiile draw_x au rolul de a desena ecranul cand utilizatorul se afla 
+in locul x, sau in evenimentul x. Functiile menu, game si settings au grija
+de logica acestor 3 "zone". 
+
+Functiile validpiece si inttochar ajuta la recuperarea respectiv stocarea
+datelor in memorie, validpiece vazand daca ce e in memorie e utilizabil,
+iar inttochar transformand valorile relevante in  stringuri.
+
+Functia colorsquare  tine minte codul culorilor fiecarei piese
+
+Cerinta 1:	Am un meniu desenta in draw_menu cu logica in menu in care se
+			poate alege intre cele 3 optiuni cerute si optiunea setari unde
+			jucatorul poate modifica viteza botului si numarul pana la care
+			se joaca. Setarile sunt facute grafic de draw_settings, iar logica
+			lor e facuta in settings
+Cerinta 2: 	Creez tabla dintr-un vector de window uri, pe care le colorez in
+			functie de numar. Generez automat cele 2 valori folosind srand,
+			time, si pentru a general valori diferite, adaug 1 la timpul din 
+			srand a doua oara (acest lucr se intampla in functia spawn). Am 
+			pe margine un alt window ce contine informatiile cerute, dar si
+			faptul ca orice tasta activeaza miscarea automata, si de asemenea
+			pana la ce numar se joaca
+Cerinta 3:	logica mutarilor se afla in functia movement, dupa ce are loc o
+			mutare valida se apeleaza iar functia spawn pentru a mai crea o piesa.
+			Daca mutarea nu e valida, se asteapta o mutare valida. Orice input
+			este valid, chiar daca nu orice mutare este valida, deoarece este foarte
+			distractiv sa apesi taste cat de repede poti ca sa se faca mutari.
+			Scorul se adauga la score tot in functia movement. In functia
+			draw_game am ales de asemenea cateva culori pentru a face jocul mai
+			frumos
+Cerinta 4:	functia auomove indeplineste cerinta, fiind ajutata de functia
+			checkfree, care vede pe ce directie se afla mutarea care elibereaza
+			cele mai multe patrate, vazand pe ce directie se afla cele mai 
+			multe patrate de aceeasi valoare care nu au alt patrat nenul intre
+			ele
+Cerinta 5:	In functia movement	se verifica daca jocul este castigat dupa fiecare
+			combinare de celule. Daca s-a ajuns la numarul dorit (care e 2048 daca
+			nu se modifica acest lucru in setari), se afiseaza You win! :D. In
+			functia game se verifica daca exista mutari care pot combina piese.
+			Daca nu, se verifica si daca exista patrate libere. Daca nu exista
+			nici acestea, se afiseaza mesajul You lose! :(. Afisarea lor se face
+			prin functiile draw_win si draw_lose.
